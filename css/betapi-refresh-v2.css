@@ -1,0 +1,53 @@
+
+/* betapi-refresh.css — bright, modern visual refresh for BETAPI. */
+:root{
+  --betapi-primary:#12a4a9; --betapi-primary-600:#0e878b;
+  --betapi-secondary:#ff6b57; --betapi-secondary-600:#e75845;
+  --betapi-ink:#1e2a2f; --betapi-ink-weak:#5b6b73;
+  --betapi-bg:#f7fafb; --betapi-card:#ffffff;
+  --betapi-ring:rgba(18,164,169,.25);
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap');
+body{ background:var(--betapi-bg); color:var(--betapi-ink); }
+h1,h2,h3,.h1,.h2,.h3{ font-family:'Poppins','Roboto',sans-serif; color:var(--betapi-ink); letter-spacing:.2px; }
+h4,h5,h6{ color:var(--betapi-ink); }
+/* Navbar */
+.custom_nav-container{ padding:12px 0; }
+.custom_nav-container .navbar-nav .nav-item .nav-link{ color:var(--betapi-ink); text-transform:none; font-weight:500; }
+.custom_nav-container .nav-item.active .nav-link,
+.custom_nav-container .nav-link:hover{ color:var(--betapi-primary); }
+/* Buttons */
+.btn{ border-radius:12px !important; padding:12px 18px !important; border:none !important;
+  transition:transform .15s ease, box-shadow .15s ease, background-color .2s ease, color .2s ease; }
+.btn-primary{ background:var(--betapi-primary) !important; color:#fff !important; }
+.btn-primary:hover{ background:var(--betapi-primary-600) !important; transform:translateY(-1px);
+  box-shadow:0 8px 22px -12px var(--betapi-ring); }
+.btn-secondary{ background:var(--betapi-secondary) !important; color:#fff !important; }
+.btn-secondary:hover{ background:var(--betapi-secondary-600) !important; transform:translateY(-1px);
+  box-shadow:0 8px 22px -12px rgba(255,107,87,.35); }
+/* Hero */
+.hero_area{ background:linear-gradient(180deg,#ffffff 0%,#f3fbfc 100%) !important; }
+.slider_section .detail-box h1{ font-size:2.6rem; line-height:1.15; }
+.slider_section .detail-box h1 span{ color:var(--betapi-primary) !important; }
+.slider_section .detail-box p{ color:var(--betapi-ink-weak); font-size:1.05rem; }
+.slider_section .img-box img{ border-radius:18px; box-shadow:0 10px 30px -12px rgba(0,0,0,.18); }
+/* Cards / sections */
+.section-sm{ padding:56px 0; } .section-md{ padding:80px 0; } .section-lg{ padding:110px 0; }
+.container{ max-width:1240px; }
+.service_section .box{ background:var(--betapi-card) !important; border:1px solid #eef4f6; border-radius:18px;
+  box-shadow:0 10px 30px -18px rgba(0,0,0,.22); padding:24px; }
+.service_section .box .img-box{ background:var(--betapi-primary) !important; }
+.service_section .box:hover{ transform:translateY(-4px); box-shadow:0 18px 44px -24px rgba(0,0,0,.28); }
+/* Careers teaser/list */
+.careers-list .career-card{ background:var(--betapi-card); border:1px solid #eef4f6; border-radius:14px;
+  padding:18px; margin-bottom:14px; display:flex; justify-content:space-between; gap:12px; align-items:center; }
+.careers-list .meta{ color:var(--betapi-ink-weak); }
+.benefit-chip{ display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px;
+  background:#e9f7f8; color:var(--betapi-primary); border:1px solid #d7f0f1; font-weight:600; margin:6px 6px 0 0; }
+/* Footer */
+.info_section{ background:#0c1f2b; color:#dde7ec; } .info_section a{ color:#cfe9ee; } .info_section a:hover{ color:#fff; }
+/* Accessibility */
+a:focus, button:focus, .btn:focus{ outline:3px solid var(--betapi-ring) !important; outline-offset:2px;
+  box-shadow:0 0 0 4px var(--betapi-ring) !important; }
+/* Responsive */
+@media (max-width: 768px){ .slider_section .detail-box h1{ font-size:2.1rem; } .careers-list .career-card{ flex-direction:column; align-items:flex-start; } }

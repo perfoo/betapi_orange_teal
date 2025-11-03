@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Prijava — BETAPI</title>
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="/css/betapi-refresh-v2.css">
+</head>
+<body class="sub_page">
+  <div class="hero_area">
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="/index.html"><span>BETAPI</span></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="s-1"></span><span class="s-2"></span><span class="s-3"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item"><a class="nav-link" href="/index.html">Početna</a></li> <li class="nav-item"><a class="nav-link" href="/about.html">O nama</a></li> <li class="nav-item"><a class="nav-link" href="/service.html">Usluge</a></li> <li class="nav-item"><a class="nav-link" href="/karijere.html">Karijere</a></li> <li class="nav-item"><a class="nav-link" href="/price.html">Cijene</a></li> <li class="nav-item"><a class="nav-link" href="/contact.html">Kontakt</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+  </div>
+
+<main>
+  <section class="section-md">
+    <div class="container">
+      <div class="heading_container mb-4">
+        <h2>Pošalji prijavu</h2>
+        <p>Upiši osnovne podatke i priloži životopis. Javit ćemo ti se u najkraćem roku.</p>
+      </div>
+      <form action="mailto:info@betapi.hr" method="post" enctype="text/plain" class="row">
+        <div class="col-md-6 mb-3">
+          <label for="ime">Ime i prezime</label>
+          <input type="text" id="ime" name="ime" class="form-control" required>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" class="form-control" required>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="pozicija">Pozicija</label>
+          <input type="text" id="pozicija" name="pozicija" class="form-control">
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="telefon">Telefon</label>
+          <input type="tel" id="telefon" name="telefon" class="form-control">
+        </div>
+        <div class="col-12 mb-3">
+          <label for="poruka">Poruka</label>
+          <textarea id="poruka" name="poruka" class="form-control" rows="4"></textarea>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Pošalji</button>
+          <a href="/karijere.html" class="btn btn-secondary ml-2">Natrag na karijere</a>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+<script>
+  (function(){ var params=new URLSearchParams(window.location.search);
+    var p=params.get('pozicija'); if(p){ document.getElementById('pozicija').value=decodeURIComponent(p.replace(/\+/g,' ')); } })();
+</script>
+
+<footer class="info_section">
+  <div class="container section-sm">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="footer-title">BETAPI</div>
+        <p>Infrastruktura, automatizacija, elektroinstalacije.</p>
+      </div>
+      <div class="col-md-4">
+        <div class="footer-title">Kontakt</div>
+        <p>Email: <a href="mailto:info@betapi.hr">info@betapi.hr</a><br>Telefon: +385 ___ ___</p>
+      </div>
+      <div class="col-md-4">
+        <div class="footer-title">Brze poveznice</div>
+        <p><a href="/service.html">Usluge</a> · <a href="/karijere.html">Karijere</a> · <a href="/contact.html">Kontakt</a></p>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="footer-bottom d-flex justify-content-between">
+      <div>© BETAPI</div>
+      <div><a href="/privacy.html">Privatnost</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/custom.js"></script>
+</body>
+</html>
