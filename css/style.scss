@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
 $white: #ffffff;
 $black: #000000;
 $primary1: #03a7d3;
@@ -5,7 +7,7 @@ $primary2: #ff4646;
 $textCol: #999;
 
 @mixin main-font {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", "Roboto", sans-serif;
 }
 
 @mixin hero_btn($col1, $col2, $pad1, $pad2, $bRadius) {
