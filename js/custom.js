@@ -22,4 +22,22 @@
       }
     });
   }
+
+  // Reveal on scroll animations
+  var revealItems = document.querySelectorAll('.reveal');
+  if(revealItems.length){
+    if('IntersectionObserver' in window){
+      var revealObserver = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, {threshold:0.15, rootMargin:'0px 0px -4% 0px'});
+      revealItems.forEach(function(el){ revealObserver.observe(el); });
+    }else{
+      revealItems.forEach(function(el){ el.classList.add('is-visible'); });
+    }
+  }
 })();
