@@ -1,5 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", "Roboto", sans-serif;
   color: #0c0c0c;
   background-color: #f8f8f8;
   overflow-x: hidden;
