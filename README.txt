@@ -4,10 +4,8 @@ BETAPI redesign (static)
 Ovaj paket sadrži redizajnirane stranice koje odgovaraju tvojoj trenutačnoj strukturi.
 
 Stranice:
-- index.html (novi hero, usluge, kultura, projekti)
-- about.html
+- index.html (novi hero, usluge, kultura, projekti, kultura rada)
 - service.html
-- price.html (okvirne kartice cijena)
 - contact.html (mailto forma)
 - karijere.html i prijava.html
 
