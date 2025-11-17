@@ -16,9 +16,9 @@ p,.lead,.info-card ul li,.info-card p,.careers-list .meta{ color:var(--betapi-in
 h4,h5,h6{ color:var(--betapi-ink); }
 /* Navbar */
 .header_section{ background:rgba(255,255,255,.96); backdrop-filter:blur(12px); box-shadow:0 18px 48px -34px rgba(17,40,53,.55); position:sticky; top:0; z-index:1030; }
-.custom_nav-container{ padding:12px 0; }
-.navbar-brand{ padding:0; display:flex; align-items:center; }
-.navbar-logo{ height:44px; width:auto; max-width:210px; object-fit:contain; display:block; }
+.custom_nav-container{ padding:10px 0; min-height:72px; }
+.navbar-brand{ padding:0; display:flex; align-items:center; height:72px; }
+.navbar-logo{ height:100%; width:auto; max-height:72px; object-fit:contain; display:block; }
 .navbar-brand span{ color:var(--betapi-primary); letter-spacing:.4px; }
 .custom_nav-container .navbar-nav .nav-item .nav-link{ color:var(--betapi-ink); text-transform:none; font-weight:600; }
 .custom_nav-container .nav-item.active .nav-link,
@@ -33,6 +33,11 @@ h4,h5,h6{ color:var(--betapi-ink); }
 .custom_nav-container .navbar-toggler[aria-expanded="true"] span::after{ background:var(--betapi-primary); }
 @media (max-width: 991.98px){
   .custom_nav-container .navbar-toggler{ display:flex; }
+}
+@media (max-width: 576px){
+  .custom_nav-container{ min-height:64px; padding:8px 0; }
+  .navbar-brand{ height:64px; }
+  .navbar-logo{ max-height:64px; }
 }
 /* Buttons */
 .btn{ border-radius:12px !important; padding:12px 18px !important; border:none !important;
