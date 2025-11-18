@@ -111,3 +111,27 @@ a:focus, button:focus, .btn:focus{ outline:3px solid var(--betapi-ring) !importa
   .reveal.reveal-up,
   .reveal.reveal-down{ opacity:1; transform:none !important; transition:none !important; }
 }
+
+/* Gallery overlay band */
+.gallery-overlay{ position:relative; overflow:hidden; background:#0c1f2b; border-radius:28px; margin:64px auto; max-width:1320px; }
+.gallery-overlay .container{ position:relative; z-index:2; }
+.gallery-overlay__slideshow{ position:absolute; inset:-8%; filter:blur(4px); opacity:.85; }
+.gallery-overlay__slideshow .frame{ position:absolute; inset:0; background-size:cover; background-position:center; border-radius:34px; animation: galleryFade 27s infinite; transform:scale(1.04); }
+.gallery-overlay__slideshow .frame-1{ background-image:url('/gallery/IMG-20251106-WA0000.jpg'); animation-delay:0s; }
+.gallery-overlay__slideshow .frame-2{ background-image:url('/gallery/IMG-20251106-WA0006.jpg'); animation-delay:9s; }
+.gallery-overlay__slideshow .frame-3{ background-image:url('/gallery/IMG-20251106-WA0009.jpg'); animation-delay:18s; }
+.gallery-overlay::after{ content:""; position:absolute; inset:0; background:radial-gradient(120% 120% at 20% 20%, rgba(18,164,169,.42), transparent 45%), linear-gradient(135deg, rgba(12,31,43,.9) 0%, rgba(12,31,43,.82) 45%, rgba(12,31,43,.94) 100%); z-index:1; }
+.gallery-overlay__content{ color:#f1fbfd; padding:48px 0; }
+.gallery-overlay__content h2{ color:#fff; font-size:2.1rem; }
+.gallery-overlay__content .lead{ color:#e0edf1; max-width:720px; }
+.eyebrow{ text-transform:uppercase; letter-spacing:2px; font-weight:700; font-size:.78rem; color:#b7ecf0; margin-bottom:10px; display:block; }
+.mini-meta{ color:#c3dfe4; font-weight:600; letter-spacing:.3px; }
+@keyframes galleryFade{ 0%,25%{ opacity:1; } 35%,100%{ opacity:0; } }
+@media (max-width: 991.98px){
+  .gallery-overlay{ margin:42px 16px; border-radius:22px; }
+  .gallery-overlay__content{ padding:38px 0; }
+  .gallery-overlay__content h2{ font-size:1.8rem; }
+}
+@media (prefers-reduced-motion: reduce){
+  .gallery-overlay__slideshow .frame{ animation:none; opacity:1; }
+}
