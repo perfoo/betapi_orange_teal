@@ -160,6 +160,32 @@
     </div>
   </section>
 
+  <section class="section-lg gallery-overlay" aria-labelledby="galerija-title">
+    <div class="container">
+      <div class="gallery-overlay__eyebrow-mobile eyebrow">Ispod površine projekta</div>
+      <div class="gallery-overlay__card reveal reveal-left">
+        <p class="eyebrow eyebrow--desktop">Ispod površine projekta</p>
+        <div class="gallery-overlay__grid">
+          <div class="gallery-overlay__content">
+            <h2 id="galerija-title">BETAPI u akciji</h2>
+            <p class="lead">Stvarni kadrovi iz montaža, spajanja i puštanja u rad – s terena i iz proizvodnih pogona. Od kontrolnih ormara do optičkih vlakana, ovako izgleda BETAPI u akciji.</p>
+            <span class="mini-meta">11 fotografija · izmjene svakih par sekundi</span>
+          </div>
+          <div class="gallery-overlay__visual" aria-hidden="true">
+            <div class="gallery-overlay__slideshow">
+              <span class="frame frame-1"></span>
+              <span class="frame frame-2"></span>
+              <span class="frame frame-3"></span>
+              <span class="frame frame-4"></span>
+              <span class="frame frame-5"></span>
+              <span class="frame frame-6"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section-sm">
     <div class="container text-center reveal reveal-up">
       <h3>Projekti i utjecaj</h3>
@@ -195,5 +221,78 @@
 <script src="/js/jquery-3.4.1.min.js"></script>
 <script src="/js/bootstrap.js"></script>
 <script src="/js/custom.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const frames = Array.from(document.querySelectorAll('.gallery-overlay__slideshow .frame'));
+    if (!frames.length) return;
+
+    const galleryImages = [
+      '/gallery/IMG-20251106-WA0000.jpg',
+      '/gallery/IMG-20251106-WA0001.jpg',
+      '/gallery/IMG-20251106-WA0002.jpg',
+      '/gallery/IMG-20251106-WA0003.jpg',
+      '/gallery/IMG-20251106-WA0004.jpg',
+      '/gallery/IMG-20251106-WA0005.jpg',
+      '/gallery/IMG-20251106-WA0006.jpg',
+      '/gallery/IMG-20251106-WA0007.jpg',
+      '/gallery/IMG-20251106-WA0008.jpg',
+      '/gallery/IMG-20251106-WA0009.jpg',
+      '/gallery/IMG-20251106-WA0010.jpg'
+    ];
+
+    const orientationCache = new Map();
+    let pool = shuffle([...galleryImages]);
+
+    function shuffle(arr) {
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function updateOrientation(frame, src) {
+      const apply = (orientation) => {
+        frame.classList.toggle('is-portrait', orientation === 'portrait');
+        frame.classList.toggle('is-landscape', orientation === 'landscape');
+      };
+
+      const cached = orientationCache.get(src);
+      if (cached) {
+        apply(cached);
+        return;
+      }
+
+      const img = new Image();
+      img.onload = function () {
+        const orientation = img.naturalWidth >= img.naturalHeight ? 'landscape' : 'portrait';
+        orientationCache.set(src, orientation);
+        apply(orientation);
+      };
+      img.src = src;
+    }
+
+    function swapFrame(frame, src) {
+      frame.classList.add('is-swapping');
+      setTimeout(() => {
+        frame.style.backgroundImage = `url('${src}')`;
+        updateOrientation(frame, src);
+        frame.classList.remove('is-swapping');
+      }, 180);
+    }
+
+    function nextBatch() {
+      if (pool.length < frames.length) {
+        pool = shuffle([...galleryImages]);
+      }
+
+      const selection = pool.splice(0, frames.length);
+      frames.forEach((frame, index) => swapFrame(frame, selection[index]));
+    }
+
+    nextBatch();
+    setInterval(nextBatch, 4200);
+  });
+</script>
 </body>
 </html>
