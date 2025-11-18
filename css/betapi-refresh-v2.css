@@ -115,18 +115,22 @@ a:focus, button:focus, .btn:focus{ outline:3px solid var(--betapi-ring) !importa
 /* Gallery overlay band */
 .gallery-overlay{ position:relative; overflow:hidden; background:#0c1f2b; border-radius:28px; margin:64px auto; max-width:1320px; }
 .gallery-overlay .container{ position:relative; z-index:2; }
-.gallery-overlay__slideshow{ position:absolute; inset:-8%; filter:blur(4px); opacity:.85; }
-.gallery-overlay__slideshow .frame{ position:absolute; inset:0; background-size:cover; background-position:center; border-radius:34px; animation: galleryFade 27s infinite; transform:scale(1.04); }
-.gallery-overlay__slideshow .frame-1{ background-image:url('/gallery/IMG-20251106-WA0000.jpg'); animation-delay:0s; }
-.gallery-overlay__slideshow .frame-2{ background-image:url('/gallery/IMG-20251106-WA0006.jpg'); animation-delay:9s; }
-.gallery-overlay__slideshow .frame-3{ background-image:url('/gallery/IMG-20251106-WA0009.jpg'); animation-delay:18s; }
-.gallery-overlay::after{ content:""; position:absolute; inset:0; background:radial-gradient(120% 120% at 20% 20%, rgba(18,164,169,.42), transparent 45%), linear-gradient(135deg, rgba(12,31,43,.9) 0%, rgba(12,31,43,.82) 45%, rgba(12,31,43,.94) 100%); z-index:1; }
+.gallery-overlay__slideshow{ position:absolute; inset:-6%; filter:blur(3px); display:block; opacity:.9; }
+.gallery-overlay__slideshow .frame{ position:absolute; background-size:cover; background-position:center; border-radius:28px; transform:scale(1.02); box-shadow:0 26px 68px -38px rgba(0,0,0,.55); transition:opacity .8s ease; }
+.gallery-overlay__slideshow .frame-1{ background-image:url('/gallery/IMG-20251106-WA0000.jpg'); width:32%; height:52%; top:10%; left:6%; animation: galleryClusterA 18s infinite; }
+.gallery-overlay__slideshow .frame-2{ background-image:url('/gallery/IMG-20251106-WA0006.jpg'); width:28%; height:48%; top:14%; right:12%; animation: galleryClusterA 18s infinite; }
+.gallery-overlay__slideshow .frame-3{ background-image:url('/gallery/IMG-20251106-WA0009.jpg'); width:34%; height:50%; bottom:4%; left:14%; animation: galleryClusterA 18s infinite; }
+.gallery-overlay__slideshow .frame-4{ background-image:url('/gallery/IMG-20251106-WA0001.jpg'); width:30%; height:44%; top:12%; left:18%; animation: galleryClusterB 18s infinite; }
+.gallery-overlay__slideshow .frame-5{ background-image:url('/gallery/IMG-20251106-WA0008.jpg'); width:32%; height:50%; bottom:6%; right:8%; animation: galleryClusterB 18s infinite; }
+.gallery-overlay__slideshow .frame-6{ background-image:url('/gallery/IMG-20251106-WA0003.jpg'); width:28%; height:46%; bottom:12%; left:4%; animation: galleryClusterB 18s infinite; }
+.gallery-overlay::after{ content:""; position:absolute; inset:0; background:radial-gradient(120% 120% at 20% 20%, rgba(18,164,169,.14), transparent 48%), linear-gradient(135deg, rgba(12,31,43,.38) 0%, rgba(12,31,43,.32) 45%, rgba(12,31,43,.44) 100%); z-index:1; }
 .gallery-overlay__content{ color:#f1fbfd; padding:48px 0; }
 .gallery-overlay__content h2{ color:#fff; font-size:2.1rem; }
 .gallery-overlay__content .lead{ color:#e0edf1; max-width:720px; }
 .eyebrow{ text-transform:uppercase; letter-spacing:2px; font-weight:700; font-size:.78rem; color:#b7ecf0; margin-bottom:10px; display:block; }
 .mini-meta{ color:#c3dfe4; font-weight:600; letter-spacing:.3px; }
-@keyframes galleryFade{ 0%,25%{ opacity:1; } 35%,100%{ opacity:0; } }
+@keyframes galleryClusterA{ 0%,44%{ opacity:1; } 50%,100%{ opacity:0; } }
+@keyframes galleryClusterB{ 0%,44%{ opacity:0; } 50%,94%{ opacity:1; } 100%{ opacity:0; } }
 @media (max-width: 991.98px){
   .gallery-overlay{ margin:42px 16px; border-radius:22px; }
   .gallery-overlay__content{ padding:38px 0; }
