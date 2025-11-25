@@ -110,6 +110,7 @@ if (class_exists('PHPMailer\\PHPMailer\\PHPMailer')) {
         $mailer->Encoding = 'base64';
         $mailer->isMail();
         $mailer->setFrom($senderEmail, 'BETAPI web');
+        $mailer->Sender = $senderEmail;
         $mailer->addAddress($recipientEmail);
         $mailer->addReplyTo($email, $name ?: 'Posjetitelj');
         $mailer->isHTML(true);
@@ -129,7 +130,14 @@ if (!$mailSent) {
         'Reply-To: ' . $email,
         'Content-Type: text/plain; charset=UTF-8',
     ];
-    $mailSent = mail($recipientEmail, $subject, $bodyText, implode("\r\n", $headers));
+    $additionalParams = '';
+    if (filter_var($senderEmail, FILTER_VALIDATE_EMAIL)) {
+        $additionalParams = '-f ' . $senderEmail;
+    }
+
+    $mailSent = $additionalParams !== ''
+        ? mail($recipientEmail, $subject, $bodyText, implode("\r\n", $headers), $additionalParams)
+        : mail($recipientEmail, $subject, $bodyText, implode("\r\n", $headers));
 }
 
 if ($mailSent) {
