@@ -13,12 +13,10 @@
   }
 
   function setupForm(form){
-    // Ensure the form never submits to a mailto: handler.
-    var endpoint = form.getAttribute('action');
-    if(!endpoint || endpoint.indexOf('mailto:') === 0){
-      endpoint = '/contact.php';
-      form.setAttribute('action', endpoint);
-    }
+    // Force the endpoint away from any mailto: handler regardless of markup state.
+    var endpoint = '/contact.php';
+    form.setAttribute('action', endpoint);
+    form.setAttribute('method', 'post');
 
     var feedback = form.querySelector('.form-feedback');
     if(!feedback){
