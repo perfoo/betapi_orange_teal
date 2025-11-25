@@ -25,6 +25,12 @@
       event.preventDefault();
       clearMessage(feedback);
 
+      if(!form.getAttribute('action') || form.getAttribute('action').indexOf('mailto:') === 0){
+        form.setAttribute('action', 'contact.php');
+      }
+
+      var endpoint = form.getAttribute('action') || 'contact.php';
+
       if(!form.reportValidity || form.reportValidity()){
         var submitButton = form.querySelector('button[type="submit"]');
         if(submitButton){
@@ -38,7 +44,7 @@
           formData.set('form_type', form.dataset.contactForm === 'prijava' ? 'application' : 'contact');
         }
 
-        fetch(form.getAttribute('action') || '/contact.php', {
+        fetch(endpoint, {
           method: 'POST',
           body: formData
         }).then(function(response){
