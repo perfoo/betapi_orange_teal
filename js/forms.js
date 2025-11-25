@@ -13,6 +13,13 @@
   }
 
   function setupForm(form){
+    // Ensure the form never submits to a mailto: handler.
+    var endpoint = form.getAttribute('action');
+    if(!endpoint || endpoint.indexOf('mailto:') === 0){
+      endpoint = '/contact.php';
+      form.setAttribute('action', endpoint);
+    }
+
     var feedback = form.querySelector('.form-feedback');
     if(!feedback){
       feedback = document.createElement('div');
@@ -25,11 +32,7 @@
       event.preventDefault();
       clearMessage(feedback);
 
-      if(!form.getAttribute('action') || form.getAttribute('action').indexOf('mailto:') === 0){
-        form.setAttribute('action', 'contact.php');
-      }
-
-      var endpoint = form.getAttribute('action') || 'contact.php';
+      endpoint = form.getAttribute('action') || '/contact.php';
 
       if(!form.reportValidity || form.reportValidity()){
         var submitButton = form.querySelector('button[type="submit"]');
