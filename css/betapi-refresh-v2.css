@@ -86,6 +86,13 @@ h4,h5,h6{ color:var(--betapi-ink); }
 }
 /* Footer */
 .info_section{ background:#0c1f2b; color:#dde7ec; } .info_section a{ color:#cfe9ee; } .info_section a:hover{ color:#fff; }
+.footer-bottom{ gap:16px; }
+.footer-branding{ display:flex; flex-direction:column; gap:4px; }
+.footer-affiliate{ font-size:.95rem; }
+.affiliation-inline{ display:inline-flex; align-items:center; gap:10px; font-weight:700; color:#0c1f2b; }
+.affiliation-inline a{ color:inherit; }
+.affiliation-inline a:hover{ color:#0e878b; }
+.affiliation-logo{ height:32px; width:auto; }
 /* Accessibility */
 a:focus, button:focus, .btn:focus{ outline:3px solid var(--betapi-ring) !important; outline-offset:2px;
   box-shadow:0 0 0 4px var(--betapi-ring) !important; }
