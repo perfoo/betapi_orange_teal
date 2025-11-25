@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     respond(false, 'Metoda nije dopuštena.', 405);
 }
 
-$recipientEmail = 'perfoo@yahoo.com';
+$recipientEmail = 'andrija@betapi.hr';
 $senderEmail = 'info@betapi.hr';
 
 $formType = isset($_POST['form_type']) ? trim((string) $_POST['form_type']) : '';
