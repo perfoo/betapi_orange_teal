@@ -18,6 +18,16 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 $recipientEmail = 'perfoo@yahoo.com';
 
+// SMTP postavke - prilagodite za produkciju kako bi slanje bilo pouzdano
+$smtpConfig = [
+    'enabled' => true,
+    'host' => 'mail.betapi.hr',
+    'username' => 'info@betapi.hr',
+    'password' => 'PROMIJENITE_ME',
+    'port' => 587,
+    'encryption' => 'tls',
+];
+
 $formType = isset($_POST['form_type']) ? trim((string) $_POST['form_type']) : '';
 $name = isset($_POST['ime']) ? trim((string) $_POST['ime']) : '';
 $email = isset($_POST['email']) ? trim((string) $_POST['email']) : '';
@@ -107,7 +117,17 @@ if (class_exists('PHPMailer\\PHPMailer\\PHPMailer')) {
         $mailer = new PHPMailer\PHPMailer\PHPMailer(true);
         $mailer->CharSet = 'UTF-8';
         $mailer->Encoding = 'base64';
-        $mailer->isMail();
+        if ($smtpConfig['enabled']) {
+            $mailer->isSMTP();
+            $mailer->Host = $smtpConfig['host'];
+            $mailer->SMTPAuth = true;
+            $mailer->Username = $smtpConfig['username'];
+            $mailer->Password = $smtpConfig['password'];
+            $mailer->Port = $smtpConfig['port'];
+            $mailer->SMTPSecure = $smtpConfig['encryption'];
+        } else {
+            $mailer->isMail();
+        }
         $mailer->setFrom('info@betapi.hr', 'BETAPI web');
         $mailer->addAddress($recipientEmail);
         $mailer->addReplyTo($email, $name ?: 'Posjetitelj');
