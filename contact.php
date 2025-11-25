@@ -16,6 +16,9 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     respond(false, 'Metoda nije dopuštena.', 405);
 }
 
+$recipientEmail = 'perfoo@yahoo.com';
+$senderEmail = 'info@betapi.hr';
+
 $formType = isset($_POST['form_type']) ? trim((string) $_POST['form_type']) : '';
 $name = isset($_POST['ime']) ? trim((string) $_POST['ime']) : '';
 $email = isset($_POST['email']) ? trim((string) $_POST['email']) : '';
@@ -106,8 +109,9 @@ if (class_exists('PHPMailer\\PHPMailer\\PHPMailer')) {
         $mailer->CharSet = 'UTF-8';
         $mailer->Encoding = 'base64';
         $mailer->isMail();
-        $mailer->setFrom('no-reply@betapi.hr', 'BETAPI web');
-        $mailer->addAddress('perfoo@yahoo.com');
+        $mailer->setFrom($senderEmail, 'BETAPI web');
+        $mailer->Sender = $senderEmail;
+        $mailer->addAddress($recipientEmail);
         $mailer->addReplyTo($email, $name ?: 'Posjetitelj');
         $mailer->isHTML(true);
         $mailer->Subject = $subject;
@@ -122,11 +126,18 @@ if (class_exists('PHPMailer\\PHPMailer\\PHPMailer')) {
 
 if (!$mailSent) {
     $headers = [
-        'From: BETAPI web <no-reply@betapi.hr>',
+        'From: BETAPI web <' . $senderEmail . '>',
         'Reply-To: ' . $email,
         'Content-Type: text/plain; charset=UTF-8',
     ];
-    $mailSent = mail('perfoo@yahoo.com', $subject, $bodyText, implode("\r\n", $headers));
+    $additionalParams = '';
+    if (filter_var($senderEmail, FILTER_VALIDATE_EMAIL)) {
+        $additionalParams = '-f ' . $senderEmail;
+    }
+
+    $mailSent = $additionalParams !== ''
+        ? mail($recipientEmail, $subject, $bodyText, implode("\r\n", $headers), $additionalParams)
+        : mail($recipientEmail, $subject, $bodyText, implode("\r\n", $headers));
 }
 
 if ($mailSent) {
