@@ -40,7 +40,7 @@
         <h2>Kontakt</h2>
         <p>Pošaljite upit ili ponudu — odgovorimo u pravilu isti dan.</p>
       </div>
-      <form action="mailto:info@betapi.hr" method="post" enctype="text/plain" class="row mt-3">
+      <form action="/contact.php" method="post" class="row mt-3" data-contact-form="kontakt">
         <div class="col-md-6 mb-3">
           <label for="ime">Ime i prezime</label>
           <input class="form-control" type="text" id="ime" name="ime" required>
@@ -53,8 +53,12 @@
           <label for="poruka">Poruka</label>
           <textarea class="form-control" id="poruka" name="poruka" rows="5" required></textarea>
         </div>
+        <input type="hidden" name="form_type" value="contact">
         <div class="col-12">
           <button class="btn btn-primary" type="submit">Pošalji</button>
+        </div>
+        <div class="col-12 mt-3">
+          <div class="alert d-none form-feedback" role="alert"></div>
         </div>
       </form>
     </div>
@@ -88,5 +92,6 @@
 <script src="/js/jquery-3.4.1.min.js"></script>
 <script src="/js/bootstrap.js"></script>
 <script src="/js/custom.js"></script>
+<script src="/js/forms.js"></script>
 </body>
 </html>
